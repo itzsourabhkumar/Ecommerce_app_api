@@ -15,6 +15,18 @@ const routes = (app) => {
     categoryValidator.validateGetById,
     categoryController.getCategoryById
   );
+
+  app.put(
+    "/ecom/api/v1/category/:id",
+    categoryValidator.validateUpdate,
+    categoryController.updateCategory
+  );
+
+  app.patch(
+    "/ecom/api/v1/category/:id",
+    categoryValidator.validatePartialUpdate,
+    categoryController.updateCategory
+  );
 };
 
 module.exports = routes;
