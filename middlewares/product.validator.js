@@ -1,5 +1,5 @@
 const productCreateValidator = (req, res, next) => {
-  if (!req.body.name || !req.body.cost) {
+  if (!req.body.name || !req.body.cost || !req.body.categoryId) {
     return res.status(400).json({
       message: "Invalid request body",
       success: false,

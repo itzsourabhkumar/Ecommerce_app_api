@@ -74,6 +74,22 @@ const destroy = async (categoryid) => {
   }
 };
 
+const getProducts = async (categoryId, query) => {
+  try {
+    const category = await Category.findByPk(categoryId, {
+      include: {
+        model: Product,
+        limit: parseInt(query.limit),
+        offset: parseInt(query.offset)
+      },
+    });
+    return category;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
 module.exports = {
   create,
   getAll,
@@ -81,4 +97,5 @@ module.exports = {
   getByName,
   update,
   destroy,
+  getProducts
 };
